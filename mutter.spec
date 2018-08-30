@@ -49,9 +49,14 @@ BuildRequires:	pkgconfig(xkbfile)
 BuildRequires:	pkgconfig(xkeyboard-config)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:	pkgconfig(xtst)
 BuildRequires:	pkgconfig(libinput)
+
+# Wayland (not ready yet)
+BuildRequires:	pkgconfig(xtst)
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:	glesv3-devel
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(x11-xcb)
 
 Requires:	zenity
 
