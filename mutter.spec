@@ -88,11 +88,13 @@ files to allow you to develop with Mutter.
 %apply_patches
 
 %build
-# fix error when building:
-export CFLAGS="$CLAGS -Wno-error=sign-compare"
+# --enable-maintainer-flags=no is needed bc clutter and cogl pulls
+# all kind -Werror flags even when you disable these.
+# we also need to disable bc g_logv() and friends are *really* badly broken - crazy -
 %configure \
 	--disable-scrollkeeper \
-	--enable-compile-warnings=no
+	--enable-compile-warnings=no \
+	--enable-maintainer-flags=no
 
 %make
 
