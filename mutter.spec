@@ -1,5 +1,6 @@
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
+%define Werror_cflags %nil
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
@@ -11,12 +12,14 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.18.2
+Version:	3.28.3
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		mutter-disable-cast-align.patch
+Patch1:		fix-string-format.patch
 
 BuildRequires:	intltool
 BuildRequires:	zenity
@@ -46,6 +49,17 @@ BuildRequires:	pkgconfig(xkbfile)
 BuildRequires:	pkgconfig(xkeyboard-config)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:	pkgconfig(libinput)
+
+# Wayland (not ready yet)
+BuildRequires:	pkgconfig(xtst)
+BuildRequires:  pkgconfig(glesv2)
+BuildRequires:	glesv3-devel
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(x11-xcb)
+BuildRequires:	pkgconfig(wayland-egl)
+BuildRequires:	pkgconfig(wayland-protocols)
+BuildRequires:	pkgconfig(wayland-server)
 
 Requires:	zenity
 
@@ -80,11 +94,16 @@ files to allow you to develop with Mutter.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
+# --enable-maintainer-flags=no is needed bc clutter and cogl pulls
+# all kind -Werror flags even when you disable these.
+# we also need to disable bc g_logv() and friends are *really* badly broken - crazy -
 %configure \
 	--disable-scrollkeeper \
-	--enable-compile-warnings=no
+	--enable-compile-warnings=no \
+	--enable-maintainer-flags=no
 
 %make
 
@@ -105,17 +124,22 @@ files to allow you to develop with Mutter.
 %{_libdir}/%{name}/plugins/default.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
-%{_datadir}/applications/mutter-wayland.desktop
+#{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
-%{_libdir}/libmutter.so.%{major}*
+%{_libdir}/libmutter-2.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/%{name}/Meta-%{api}.typelib
+#{_libdir}/%{name}/Meta-%{api}.typelib
+%{_libdir}/mutter/*
 
 %files -n %{devname}
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%{_libdir}/%{name}/Meta-%{api}.gir
-
+#{_libdir}/%{name}/Meta-%{api}.gir
+%exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug

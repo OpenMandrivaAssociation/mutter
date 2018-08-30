@@ -1,0 +1,11 @@
+--- mutter-3.24.0/src/backends/meta-input-settings.c-orig	2017-03-22 23:20:51.766019607 +0100
++++ mutter-3.24.0/src/backends/meta-input-settings.c	2017-03-22 23:22:04.075657321 +0100
+@@ -1105,7 +1105,7 @@
+     }
+   else
+     {
+-      path = g_strdup_printf ("/org/gnome/desktop/peripherals/stylus/%lx/", serial);
++      path = g_strdup_printf ("/org/gnome/desktop/peripherals/stylus/%" G_GUINT64_FORMAT "/", serial);
+     }
+ 
+   tool_settings =
