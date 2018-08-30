@@ -127,7 +127,7 @@ files to allow you to develop with Mutter.
 #{_libdir}/libmutter.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/%{name}/Meta-%{api}.typelib
+#{_libdir}/%{name}/Meta-%{api}.typelib
 
 %files -n %{devname}
 %{_libdir}/*.so
