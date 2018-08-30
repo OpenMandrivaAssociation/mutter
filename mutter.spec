@@ -121,7 +121,7 @@ files to allow you to develop with Mutter.
 %{_libdir}/%{name}/plugins/default.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
-%{_datadir}/applications/mutter-wayland.desktop
+#{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
 %{_libdir}/libmutter.so.%{major}*
