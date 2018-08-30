@@ -133,5 +133,5 @@ files to allow you to develop with Mutter.
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%{_libdir}/%{name}/Meta-%{api}.gir
+#{_libdir}/%{name}/Meta-%{api}.gir
 
