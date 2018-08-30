@@ -51,6 +51,7 @@ BuildRequires:	pkgconfig(xrender)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:	pkgconfig(xtst)
 BuildRequires:	pkgconfig(libinput)
+BuildRequires:  pkgconfig(glesv2)
 
 Requires:	zenity
 
