@@ -124,7 +124,7 @@ files to allow you to develop with Mutter.
 #{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
-%{_libdir}/libmutter.so.%{major}*
+#{_libdir}/libmutter.so.%{major}*
 
 %files -n %{girname}
 %{_libdir}/%{name}/Meta-%{api}.typelib
