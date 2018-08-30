@@ -57,6 +57,9 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:	glesv3-devel
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(x11-xcb)
+BuildRequires:	pkgconfig(wayland-egl)
+BuildRequires:	pkgconfig(wayland-protocols)
+BuildRequires:	pkgconfig(wayland-server)
 
 Requires:	zenity
 
@@ -124,14 +127,19 @@ files to allow you to develop with Mutter.
 #{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
-#{_libdir}/libmutter.so.%{major}*
+%{_libdir}/libmutter-2.so.%{major}*
 
 %files -n %{girname}
 #{_libdir}/%{name}/Meta-%{api}.typelib
+%{_libdir}/mutter/*
 
 %files -n %{devname}
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 #{_libdir}/%{name}/Meta-%{api}.gir
-
+%exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
+%exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug
