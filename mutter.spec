@@ -138,8 +138,8 @@ files to allow you to develop with Mutter.
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 #{_libdir}/%{name}/Meta-%{api}.gir
-%exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug
