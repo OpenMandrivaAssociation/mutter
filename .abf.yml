@@ -4,5 +4,6 @@ removed_sources:
   mutter-3.18.1.tar.xz: 4bd5885e548e8d8ee22f314531b9cdfde1af4831
   mutter-3.8.3.tar.xz: a1998e79106eb676da01aa050e7e4d20965872b9
   mutter-3.18.2.tar.xz: 6d754fa4edf517602fe3148751e341dafe4f91db
-sources:
   mutter-3.28.3.tar.xz: a7a01f50c75dc6c1e0fe708656cfce1546624568
+sources:
+  mutter-3.30.0.tar.xz: 207cb2fcdb154070f7c3f3cb83bc6be4c60ef032
