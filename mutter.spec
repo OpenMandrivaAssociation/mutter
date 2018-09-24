@@ -12,7 +12,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.28.3
+Version:	3.30.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -127,7 +127,7 @@ files to allow you to develop with Mutter.
 #{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
-%{_libdir}/libmutter-2.so.%{major}*
+%{_libdir}/libmutter-3.so.%{major}*
 
 %files -n %{girname}
 #{_libdir}/%{name}/Meta-%{api}.typelib
@@ -138,8 +138,9 @@ files to allow you to develop with Mutter.
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 #{_libdir}/%{name}/Meta-%{api}.gir
-%exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
-%exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
+#exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug
+%exclude /usr/lib/debug/usr/lib64/libmutter-3.so.0.0.0-3.30.0-1.x86_64.debug
