@@ -1,0 +1,13 @@
+diff --git a/src/backends/native/meta-cursor-renderer-native.c b/src/backends/native/meta-cursor-renderer-native.c
+index 44c3c54..02c749b 100644
+--- a/src/backends/native/meta-cursor-renderer-native.c
++++ b/src/backends/native/meta-cursor-renderer-native.c
+@@ -396,7 +396,7 @@ update_hw_cursor (MetaCursorRendererNative *native,
+   if (cursor_sprite)
+     rect = meta_cursor_renderer_calculate_rect (renderer, cursor_sprite);
+   else
+-    rect = (ClutterRect) { 0 };
++    rect = (ClutterRect) {{ 0 }};
+ 
+   logical_monitors =
+     meta_monitor_manager_get_logical_monitors (monitor_manager);

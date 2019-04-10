@@ -4,7 +4,8 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api 3.0
+%define api_m 4
+%define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
 %define girname %mklibname %{name}-gir %{api}
@@ -12,17 +13,20 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.30.2
-Release:	2
+Version:	3.32.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		mutter-disable-cast-align.patch
-Patch1:		fix-string-format.patch
+Patch0:		0001-build-Don-t-use-absolute-paths-with-subdir-keyword.patch
+Patch1:		0001-wayland-Defer-text_input.done-on-an-idle.patch
+Patch2:		0001-window-actor-Special-case-shaped-Java-windows.patch
+Patch3:		werror.patch
 
 BuildRequires:	intltool
 BuildRequires:	zenity
+BuildRequires:	meson
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(clutter-1.0)
 BuildRequires:	pkgconfig(gbm)
@@ -32,6 +36,13 @@ BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
+BuildRequires:	gnome-settings-daemon-devel
+BuildRequires:	pkgconfig(gudev-1.0)
+BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	pkgconfig(libwacom)
+BuildRequires:	pipewire-devel
+BuildRequires:	x11-server-xwayland
+BuildRequires:	wayland-protocols-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(libcanberra-gtk3)
@@ -97,18 +108,16 @@ files to allow you to develop with Mutter.
 %apply_patches
 
 %build
-# --enable-maintainer-flags=no is needed bc clutter and cogl pulls
-# all kind -Werror flags even when you disable these.
-# we also need to disable bc g_logv() and friends are *really* badly broken - crazy -
-%configure \
-	--disable-scrollkeeper \
-	--enable-compile-warnings=no \
-	--enable-maintainer-flags=no
 
-%make
+sed -i "/'-Werror=redundant-decls',/d" meson.build 
+%meson -Dopengl=true -Degl=true \
+	-Dglx=true -Dsm=true -Dinstalled_tests=false
+
+
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 %find_lang %{name}
 
 %files -f %{name}.lang
@@ -119,28 +128,21 @@ files to allow you to develop with Mutter.
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/*.xml
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/plugins
-%{_libdir}/%{name}/plugins/default.so
+%dir %{_libdir}/%{name}-%{api_m}
+%dir %{_libdir}/%{name}-%{api_m}/plugins
+%{_libdir}/%{name}-%{api_m}/plugins/libdefault.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
 #{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
-%{_libdir}/libmutter-3.so.%{major}*
+%{_libdir}/libmutter-%{api_m}.so.%{major}*
 
 %files -n %{girname}
-#{_libdir}/%{name}/Meta-%{api}.typelib
-%{_libdir}/mutter/*
+%{_libdir}/mutter-%{api_m}/*
 
 %files -n %{devname}
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-#{_libdir}/%{name}/Meta-%{api}.gir
-#exclude %{_libdir}/lib64/libmutter-2.so.0.0.0-3.28.3-1.x86_64.debug
-#exclude %{_libdir}lib64/mutter/libmutter-clutter-2.so-3.28.3-1.x86_64.debug
-#exclude %{_libdir}lib64/mutter/libmutter-cogl-2.so-3.28.3-1.x86_64.debug
-#exclude %{_libdir}lib64/mutter/libmutter-cogl-pango-2.so-3.28.3-1.x86_64.debug
-#exclude %{_libdir}lib64/mutter/libmutter-cogl-path-2.so-3.28.3-1.x86_64.debug
-%exclude /usr/lib/debug/usr/lib64/libmutter-3.so.0.0.0-3.30.0-1.x86_64.debug
+%exclude /usr/lib/debug/usr/lib64/libmutter-%{api_m}.so.0.0.0-3.32.0-1.x86_64.debug
