@@ -13,14 +13,12 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.32.0
+Version:	3.32.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		0001-build-Don-t-use-absolute-paths-with-subdir-keyword.patch
-Patch1:		0001-wayland-Defer-text_input.done-on-an-idle.patch
 Patch2:		0001-window-actor-Special-case-shaped-Java-windows.patch
 Patch3:		werror.patch
 
