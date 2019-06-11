@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.32.1
+Version:	3.32.2
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -23,7 +23,9 @@ Patch2:		0001-window-actor-Special-case-shaped-Java-windows.patch
 Patch3:		werror.patch
 
 BuildRequires:	intltool
-BuildRequires:	zenity
+BuildRequires:	gettext
+BuildRequires:	gtk-doc
+BuildRequires:	zenity-gtk
 BuildRequires:	meson
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(clutter-1.0)
@@ -34,11 +36,13 @@ BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
-BuildRequires:	gnome-settings-daemon-devel
+BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gudev-1.0)
+BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pipewire-devel
+BuildRequires:	pkgconfig(libpipewire-0.2)
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
@@ -52,6 +56,7 @@ BuildRequires:	pkgconfig(xcomposite)
 BuildRequires:	pkgconfig(xcursor)
 BuildRequires:	pkgconfig(xdamage)
 BuildRequires:	pkgconfig(xfixes)
+BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(xkbcommon-x11)
 BuildRequires:	pkgconfig(xkbfile)
@@ -59,6 +64,14 @@ BuildRequires:	pkgconfig(xkeyboard-config)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:	pkgconfig(libinput)
+
+BuildRequires:	pkgconfig(wayland-server) >= 1.13.0
+BuildRequires:	pkgconfig(wayland-protocols) >= 1.16
+BuildRequires:	pkgconfig(clutter-wayland-1.0)
+BuildRequires:	pkgconfig(clutter-wayland-compositor-1.0)
+BuildRequires:	pkgconfig(clutter-egl-1.0)
+BuildRequires:	pkgconfig(cogl-1.0) >= 1.17.1
+
 
 # Wayland (not ready yet)
 BuildRequires:	pkgconfig(xtst)
@@ -70,7 +83,7 @@ BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-server)
 
-Requires:	zenity
+Requires:	zenity-gtk
 
 %description
 Mutter is a simple window manager that integrates nicely with
@@ -143,4 +156,4 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%exclude /usr/lib/debug/usr/lib64/libmutter-%{api_m}.so.0.0.0-3.32.0-1.x86_64.debug
+#exclude /usr/lib/debug/usr/lib64/libmutter-%{api_m}.so.0.0.0-3.32.0-1.x86_64.debug
