@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 4
+%define api_m 5
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -19,8 +19,8 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
-Patch2:		0001-window-actor-Special-case-shaped-Java-windows.patch
-Patch3:		werror.patch
+#Patch2:		0001-window-actor-Special-case-shaped-Java-windows.patch
+#Patch3:		werror.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
