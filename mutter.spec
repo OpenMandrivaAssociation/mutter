@@ -71,6 +71,7 @@ BuildRequires:	pkgconfig(clutter-wayland-1.0)
 #BuildRequires:	pkgconfig(clutter-wayland-compositor-1.0)
 BuildRequires:	pkgconfig(clutter-egl-1.0)
 BuildRequires:	pkgconfig(cogl-1.0) >= 1.17.1
+BuildRequires:	pkgconfig(sysprof-capture-3)
 
 
 # Wayland (not ready yet)
