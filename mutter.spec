@@ -75,7 +75,7 @@ BuildRequires:	pkgconfig(sysprof-capture-3)
 # Wayland (not ready yet)
 BuildRequires:	pkgconfig(xtst)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:	glesv3-devel
+#BuildRequires:	glesv3-devel
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(x11-xcb)
 BuildRequires:	pkgconfig(wayland-egl)
