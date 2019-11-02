@@ -1,0 +1,14 @@
+diff -up mutter-3.34.1/cogl/cogl/cogl-egl-defines.h.in.omv~ mutter-3.34.1/cogl/cogl/cogl-egl-defines.h.in
+diff -up mutter-3.34.1/cogl/cogl/meson.build.omv~ mutter-3.34.1/cogl/cogl/meson.build
+--- mutter-3.34.1/cogl/cogl/meson.build.omv~	2019-11-02 18:27:49.759003631 +0100
++++ mutter-3.34.1/cogl/cogl/meson.build	2019-11-02 18:28:00.904045278 +0100
+@@ -48,7 +48,7 @@ cogl_gl_header_h = configure_file(
+ built_headers += [cogl_gl_header_h]
+ 
+ if have_egl
+-  cogl_egl_includes_string = '#include <EGL/egl.h>\n#include <EGL/eglext.h>'
++  cogl_egl_includes_string = '#include <EGL/egl.h>\n#include <EGL/eglext.h>\n#include <EGL/eglmesaext.h>\n'
+ else
+   cogl_egl_includes_string = ''
+ endif
+diff -up mutter-3.34.1/cogl/meson.build.omv~ mutter-3.34.1/cogl/meson.build

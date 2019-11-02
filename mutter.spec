@@ -19,6 +19,7 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		mutter-3.34.1-compile.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
@@ -114,8 +115,7 @@ This package provides the necessary development libraries and include
 files to allow you to develop with Mutter.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 
