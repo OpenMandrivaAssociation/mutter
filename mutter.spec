@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.34.4
+Version:	3.36.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -41,7 +41,7 @@ BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pipewire-devel
-BuildRequires:	pkgconfig(libpipewire-0.2)
+BuildRequires:	pkgconfig(libpipewire-0.3)
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
