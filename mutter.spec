@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 5
+%define api_m 6
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,13 +13,13 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.34.4
+Version:	3.36.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		mutter-3.34.1-compile.patch
+#Patch0:		mutter-3.34.1-compile.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
@@ -37,11 +37,12 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gudev-1.0)
+BuildRequires:	pkgconfig(graphene-gobject-1.0)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pipewire-devel
-BuildRequires:	pkgconfig(libpipewire-0.2)
+BuildRequires:	pkgconfig(libpipewire-0.3)
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
