@@ -14,7 +14,7 @@
 Summary:	Mutter window manager
 Name:		mutter
 Version:	3.36.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
@@ -67,6 +67,7 @@ BuildRequires:	pkgconfig(libinput)
 
 BuildRequires:	pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:	pkgconfig(wayland-protocols) >= 1.16
+BuildRequires:  pkgconfig(wayland-eglstream-protocols)
 BuildRequires:	pkgconfig(clutter-wayland-1.0)
 #BuildRequires:	pkgconfig(clutter-wayland-compositor-1.0)
 BuildRequires:	pkgconfig(clutter-egl-1.0)
@@ -86,6 +87,7 @@ BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	egl-devel
 
 Requires:	zenity-gtk
+Requires:	%{girname} = %{version}-%{release}
 
 %description
 Mutter is a simple window manager that integrates nicely with
@@ -121,10 +123,23 @@ files to allow you to develop with Mutter.
 
 %build
 
-sed -i "/'-Werror=redundant-decls',/d" meson.build 
-%meson -Dopengl=true -Degl=true \
-	-Dglx=true -Dsm=true -Dinstalled_tests=false
+# Need disable: "xwayland_initfd" because x11-server-xwayland not support it yet.
+# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1103
 
+sed -i "/'-Werror=redundant-decls',/d" meson.build 
+%meson  \
+	-Dopengl=true \
+	-Degl=true \
+	-Dglx=true \
+	-Dsm=true \
+	-Dintrospection=true \
+	-Dwayland=true \
+	-Degl_device=true \
+	-Dwayland_eglstream=true \
+	-Dxwayland_initfd=disabled \
+	-Dremote_desktop=true \
+	-Dnative_backend=true \
+	-Dinstalled_tests=false
 
 %meson_build
 
