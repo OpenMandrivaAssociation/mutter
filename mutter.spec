@@ -126,7 +126,7 @@ files to allow you to develop with Mutter.
 # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1103
 
 sed -i "/'-Werror=redundant-decls',/d" meson.build 
-%meson  /
+%meson  \
 	-Dopengl=true \
 	-Degl=true \
 	-Dglx=true \
