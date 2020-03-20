@@ -67,6 +67,7 @@ BuildRequires:	pkgconfig(libinput)
 
 BuildRequires:	pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:	pkgconfig(wayland-protocols) >= 1.16
+BuildRequires:  pkgconfig(wayland-eglstream-protocols)
 BuildRequires:	pkgconfig(clutter-wayland-1.0)
 #BuildRequires:	pkgconfig(clutter-wayland-compositor-1.0)
 BuildRequires:	pkgconfig(clutter-egl-1.0)
