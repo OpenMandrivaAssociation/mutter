@@ -13,13 +13,12 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.36.0
-Release:	2
+Version:	3.36.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
-#Patch0:		mutter-3.34.1-compile.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
