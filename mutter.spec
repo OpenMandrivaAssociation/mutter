@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 6
+%define api_m 7
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.36.6
+Version:	3.38.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -71,7 +71,7 @@ BuildRequires:	pkgconfig(clutter-wayland-1.0)
 #BuildRequires:	pkgconfig(clutter-wayland-compositor-1.0)
 BuildRequires:	pkgconfig(clutter-egl-1.0)
 BuildRequires:	pkgconfig(cogl-1.0) >= 1.17.1
-BuildRequires:	pkgconfig(sysprof-capture-3)
+BuildRequires:	pkgconfig(sysprof-capture-4)
 
 
 # Wayland (not ready yet)
