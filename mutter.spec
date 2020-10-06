@@ -159,6 +159,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/%{name}-%{api_m}/plugins/libdefault.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
+/lib/udev/rules.d/61-mutter.rules
 #{_datadir}/applications/mutter-wayland.desktop
 
 %files -n %{libname}
