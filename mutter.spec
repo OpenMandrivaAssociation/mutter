@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.38.1
+Version:	3.38.2
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
