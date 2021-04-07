@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 7
+%define api_m 8
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	3.38.4
+Version:	40.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -122,9 +122,6 @@ files to allow you to develop with Mutter.
 
 %build
 
-# Need disable: "xwayland_initfd" because x11-server-xwayland not support it yet.
-# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1103
-
 sed -i "/'-Werror=redundant-decls',/d" meson.build 
 %meson  \
 	-Dopengl=true \
@@ -135,7 +132,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dwayland=true \
 	-Degl_device=true \
 	-Dwayland_eglstream=true \
-	-Dxwayland_initfd=disabled \
+	-Dxwayland_initfd=enabled \
 	-Dremote_desktop=true \
 	-Dnative_backend=true \
 	-Dinstalled_tests=false
