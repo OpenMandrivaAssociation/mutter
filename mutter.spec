@@ -42,6 +42,7 @@ BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pipewire-devel
 BuildRequires:	pkgconfig(libpipewire-0.3)
+BuildRequires:	x11-server-xvfb
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
