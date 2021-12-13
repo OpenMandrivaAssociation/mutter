@@ -85,6 +85,7 @@ BuildRequires:	pkgconfig(x11-xcb)
 BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-server)
+BuildRequires:	pkgconfig(xwayland)
 BuildRequires:	egl-devel
 
 Requires:	zenity-gtk
