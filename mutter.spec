@@ -64,7 +64,7 @@ BuildRequires:	pkgconfig(xkeyboard-config)
 BuildRequires:	pkgconfig(xrender)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:	pkgconfig(libinput)
-
+BuildRequires:	pkgconfig(libxcvt)
 BuildRequires:	pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:	pkgconfig(wayland-protocols) >= 1.16
 BuildRequires:  pkgconfig(wayland-eglstream-protocols)
