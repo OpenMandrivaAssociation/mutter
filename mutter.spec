@@ -25,6 +25,7 @@ BuildRequires:	gettext
 BuildRequires:	gtk-doc
 BuildRequires:	zenity-gtk
 BuildRequires:	meson
+BuildRequires:	cvt
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(clutter-1.0)
 BuildRequires:	pkgconfig(gbm)
