@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 9
+%define api_m 10
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	41.4
+Version:	42.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
