@@ -22,7 +22,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{vers
 
 # Backported from upstream
 # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2623
-Patch1:        2623.patch
+Patch0:        2623.patch
  
 # Backported from upstream
 # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2624
