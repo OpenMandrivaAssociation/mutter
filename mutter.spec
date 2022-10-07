@@ -122,6 +122,14 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package provides the necessary development libraries and include
 files to allow you to develop with Mutter.
 
+%package  tests
+Summary:  Tests for the %{name} package
+Requires: %{name}%{?_isa} = %{version}-%{release}
+ 
+%description tests
+The %{name}-tests package contains tests that can be used to verify
+the functionality of the installed %{name} package.
+
 %prep
 %autosetup -p1
 
@@ -174,4 +182,6 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-#exclude /usr/lib/debug/usr/lib64/libmutter-%{api_m}.so.0.0.0-3.32.0-1.x86_64.debug
+
+%files tests
+%{_datadir}/mutter-%{api}/tests/
