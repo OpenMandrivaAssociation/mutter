@@ -184,4 +184,4 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/pkgconfig/*
 
 %files tests
-%{_datadir}/mutter-%{api}/tests/
+%{_datadir}/mutter-%{api_m}/tests/
