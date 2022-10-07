@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 10
+%define api_m 11
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,12 +13,21 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	42.4
+Version:	43.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
+
+# Backported from upstream
+# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2623
+Patch1:        2623.patch
+ 
+# Backported from upstream
+# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2624
+# https://bugzilla.redhat.com/show_bug.cgi?id=2128660
+Patch1:        2624.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
@@ -28,6 +37,8 @@ BuildRequires:	meson
 BuildRequires:	cvt
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(clutter-1.0)
+BuildRequires:	pkgconfig(lcms2)
+BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glib-2.0)
@@ -120,6 +131,14 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package provides the necessary development libraries and include
 files to allow you to develop with Mutter.
 
+%package  tests
+Summary:  Tests for the %{name} package
+Requires: %{name}%{?_isa} = %{version}-%{release}
+ 
+%description tests
+The %{name}-tests package contains tests that can be used to verify
+the functionality of the installed %{name} package.
+
 %prep
 %autosetup -p1
 
@@ -172,4 +191,6 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-#exclude /usr/lib/debug/usr/lib64/libmutter-%{api_m}.so.0.0.0-3.32.0-1.x86_64.debug
+
+%files tests
+%{_datadir}/mutter-%{api_m}/tests/
