@@ -28,6 +28,8 @@ BuildRequires:	meson
 BuildRequires:	cvt
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(clutter-1.0)
+BuildRequires:	pkgconfig(lcms2)
+BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glib-2.0)
