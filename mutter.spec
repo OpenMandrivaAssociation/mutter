@@ -21,13 +21,6 @@ Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 
 # Backported from upstream
-# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2623
-Patch0:        2623.patch
- 
-# Backported from upstream
-# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2624
-# https://bugzilla.redhat.com/show_bug.cgi?id=2128660
-Patch1:        2624.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
