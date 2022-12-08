@@ -13,20 +13,14 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	43.1
-Release:	2
+Version:	43.2
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 
 # Backported from upstream
-# Revert Clutter optimization causing issues on X11            
-# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2667            
-# Will be replaced with a proper fix in 43.2            
-# Backport edge resistance fix            
-# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/268
-Patch0:        post-43.1-fixes.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
