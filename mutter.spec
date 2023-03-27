@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 11
+%define api_m 12
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -161,7 +161,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %files -f %{name}.lang
 %doc COPYING NEWS
 %{_bindir}/*
-%{_datadir}/applications/%{name}.desktop
+#{_datadir}/applications/%{name}.desktop
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
