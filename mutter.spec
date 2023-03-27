@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 11
+%define api_m 12
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	43.3
+Version:	44.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -56,7 +56,7 @@ BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(pango)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(upower-glib)
-BuildRequires:	pkgconfig(gnome-desktop-3.0)
+BuildRequires:	pkgconfig(gnome-desktop-4)
 BuildRequires:	pkgconfig(xcomposite)
 BuildRequires:	pkgconfig(xcursor)
 BuildRequires:	pkgconfig(xdamage)
@@ -161,7 +161,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %files -f %{name}.lang
 %doc COPYING NEWS
 %{_bindir}/*
-%{_datadir}/applications/%{name}.desktop
+#{_datadir}/applications/%{name}.desktop
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
@@ -171,6 +171,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/%{name}-%{api_m}/plugins/libdefault.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
+%{_libexecdir}/mutter-x11-frames
 %{_prefix}/lib/udev/rules.d/61-mutter.rules
 #{_datadir}/applications/mutter-wayland.desktop
 
