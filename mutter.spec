@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	43.3
+Version:	44.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -56,7 +56,7 @@ BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(pango)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(upower-glib)
-BuildRequires:	pkgconfig(gnome-desktop-3.0)
+BuildRequires:	pkgconfig(gnome-desktop-4)
 BuildRequires:	pkgconfig(xcomposite)
 BuildRequires:	pkgconfig(xcursor)
 BuildRequires:	pkgconfig(xdamage)
