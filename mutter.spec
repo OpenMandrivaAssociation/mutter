@@ -13,8 +13,8 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	44.0
-Release:	2
+Version:	44.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
@@ -45,7 +45,7 @@ BuildRequires:	pkgconfig(graphene-gobject-1.0)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
-BuildRequires:	pipewire-devel
+BuildRequires:	pkgconfig(libpipewire-0.3)
 BuildRequires:	pkgconfig(libpipewire-0.3)
 BuildRequires:	x11-server-xvfb
 BuildRequires:	x11-server-xwayland
