@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 12
+%define api_m 13
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	44.4
+Version:	45.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -43,6 +43,8 @@ BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(graphene-gobject-1.0)
 BuildRequires:	pkgconfig(libdrm)
+BuildRequires:	pkgconfig(libeis-1.0)
+BuildRequires:	pkgconfig(libei-1.0)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libpipewire-0.3)
