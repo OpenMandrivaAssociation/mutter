@@ -13,12 +13,12 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	45.0
+Version:	45.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://ftp.gnome.org/pub/gnome/sources/mutter/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 
 # Backported from upstream
 
