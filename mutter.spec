@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 13
+%define api_m 14
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
@@ -13,7 +13,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	45.4
+Version:	46.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -48,7 +48,7 @@ BuildRequires:	pkgconfig(libei-1.0)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libpipewire-0.3)
-BuildRequires:	pkgconfig(libpipewire-0.3)
+BuildRequires:	pkgconfig(libdisplay-info)
 BuildRequires:	x11-server-xvfb
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
@@ -92,6 +92,7 @@ BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xwayland)
 BuildRequires:	egl-devel
+BuildRequires:	python3dist(python-dbusmock)
 
 Requires:	zenity-gtk
 Requires:	%{girname} = %{version}-%{release}
