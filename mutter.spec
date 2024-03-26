@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 13
+%define api_m 14
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name} %{major}
