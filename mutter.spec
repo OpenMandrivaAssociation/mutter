@@ -48,7 +48,7 @@ BuildRequires:	pkgconfig(libei-1.0)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libwacom)
 BuildRequires:	pkgconfig(libpipewire-0.3)
-BuildRequires:	pkgconfig(libpipewire-0.3)
+BuildRequires:	pkgconfig(libdisplay-info)
 BuildRequires:	x11-server-xvfb
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
