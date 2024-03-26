@@ -92,6 +92,7 @@ BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xwayland)
 BuildRequires:	egl-devel
+BuildRequires:	python3dist(python-dbusmock)
 
 Requires:	zenity-gtk
 Requires:	%{girname} = %{version}-%{release}
