@@ -19,7 +19,6 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		mutter-47.0-fix-bogus-require.patch
 # Backported from upstream
 
 BuildRequires:	intltool
