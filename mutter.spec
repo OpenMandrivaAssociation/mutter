@@ -14,7 +14,7 @@
 Summary:	Mutter window manager
 Name:		mutter
 Version:	47.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
@@ -80,6 +80,7 @@ BuildRequires:	pkgconfig(clutter-wayland-1.0)
 BuildRequires:	pkgconfig(clutter-egl-1.0)
 BuildRequires:	pkgconfig(cogl-1.0) >= 1.17.1
 BuildRequires:	pkgconfig(sysprof-capture-4)
+BuildRequires:	sysprof
 
 BuildRequires:	pkgconfig(xtst)
 BuildRequires:  pkgconfig(glesv2)
