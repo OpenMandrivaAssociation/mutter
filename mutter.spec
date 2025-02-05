@@ -7,13 +7,15 @@
 %define api_m 15
 %define api %{api_m}.0
 %define major 0
-%define libname %mklibname %{name} %{major}
-%define girname %mklibname %{name}-gir %{api}
+%define libname %mklibname %{name}
+%define oldlibname %mklibname %{name} 0
+%define girname %mklibname %{name}-gir
+%define oldgirname %mklibname %{name}-gir 15.0
 %define devname %mklibname -d %{name}
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	47.4
+Version:	47.5
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -96,6 +98,7 @@ BuildRequires:	python3dist(python-dbusmock)
 
 Requires:	zenity-gtk
 Requires:	%{girname} = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 
 %description
 Mutter is a simple window manager that integrates nicely with
@@ -104,6 +107,7 @@ GNOME.
 %package -n %{libname}
 Summary:	Libraries for Mutter
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 This package contains libraries used by Mutter.
@@ -111,6 +115,7 @@ This package contains libraries used by Mutter.
 %package -n %{girname}
 Summary:	GObject Introspection interface description for %{name}
 Group:		System/Libraries
+%rename %{oldgirname}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
