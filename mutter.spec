@@ -15,7 +15,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	47.6
+Version:	48.rc
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -95,10 +95,14 @@ BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xwayland)
 BuildRequires:	egl-devel
 BuildRequires:	python3dist(python-dbusmock)
+BuildRequires:  python-argcomplete
+BuildRequires:  python-docutils
 
 Requires:	zenity-gtk
 Requires:	%{girname} = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
+
+Requires: python-argcomplete
 
 %description
 Mutter is a simple window manager that integrates nicely with
@@ -181,6 +185,9 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libexecdir}/mutter-x11-frames
 %{_prefix}/lib/udev/rules.d/61-mutter.rules
 #{_datadir}/applications/mutter-wayland.desktop
+%{_bindir}/gdctl
+%{_mandir}/man1/gdctl.1*
+%{_sysconfdir}/bash_completion.d/gdctl
 
 %files -n %{libname}
 %{_libdir}/libmutter-%{api_m}.so.%{major}*
