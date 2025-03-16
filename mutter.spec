@@ -185,8 +185,6 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libexecdir}/mutter-x11-frames
 %{_prefix}/lib/udev/rules.d/61-mutter.rules
 #{_datadir}/applications/mutter-wayland.desktop
-%{_bindir}/gdctl
-%{_mandir}/man1/gdctl.1*
 %{_sysconfdir}/bash_completion.d/gdctl
 
 %files -n %{libname}
