@@ -16,7 +16,7 @@
 Summary:	Mutter window manager
 Name:		mutter
 Version:	48.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
@@ -161,7 +161,9 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dxwayland_initfd=enabled \
 	-Dremote_desktop=true \
 	-Dnative_backend=true \
-	-Dinstalled_tests=false
+	-Dinstalled_tests=false \
+        -Dcogl_tests=false \
+	-Dclutter_tests=false
 
 %meson_build
 
@@ -197,7 +199,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/mutter-16/Clutter-%{api_m}.typelib
 %{_libdir}/mutter-16/Cogl-%{api_m}.typelib
 %{_libdir}/mutter-16/Meta-%{api_m}.typelib
-%{_libdir}/mutter-16/MetaTest-%{api_m}.typelib
+#{_libdir}/mutter-16/MetaTest-%{api_m}.typelib
 %{_libdir}/mutter-16/Mtk-%{api_m}.typelib
 
 %files -n %{devname}
@@ -208,7 +210,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/mutter-16/Clutter-%{api_m}.gir
 %{_libdir}/mutter-16/Cogl-%{api_m}.gir
 %{_libdir}/mutter-16/Meta-%{api_m}.gir
-%{_libdir}/mutter-16/MetaTest-%{api_m}.gir
+#{_libdir}/mutter-16/MetaTest-%{api_m}.gir
 %{_libdir}/mutter-16/Mtk-%{api_m}.gir
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
