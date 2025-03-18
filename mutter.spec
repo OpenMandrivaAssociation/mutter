@@ -16,7 +16,7 @@
 Summary:	Mutter window manager
 Name:		mutter
 Version:	48.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
@@ -191,7 +191,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/libmutter-%{api_m}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/mutter-%{api_m}/*
+#{_libdir}/mutter-%{api_m}/*
 
 %files -n %{devname}
 %{_libdir}/*.so
