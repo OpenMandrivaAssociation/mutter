@@ -200,7 +200,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/mutter-16/Clutter-%{api_m}.typelib
 %{_libdir}/mutter-16/Cogl-%{api_m}.typelib
 %{_libdir}/mutter-16/Meta-%{api_m}.typelib
-%{_libdir}/mutter-16/MetaTest-%{api_m}.typelib
+#{_libdir}/mutter-16/MetaTest-%{api_m}.typelib
 %{_libdir}/mutter-16/Mtk-%{api_m}.typelib
 
 %files -n %{devname}
@@ -211,7 +211,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/mutter-16/Clutter-%{api_m}.gir
 %{_libdir}/mutter-16/Cogl-%{api_m}.gir
 %{_libdir}/mutter-16/Meta-%{api_m}.gir
-%{_libdir}/mutter-16/MetaTest-%{api_m}.gir
+#{_libdir}/mutter-16/MetaTest-%{api_m}.gir
 %{_libdir}/mutter-16/Mtk-%{api_m}.gir
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
