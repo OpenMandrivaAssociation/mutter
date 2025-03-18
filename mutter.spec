@@ -189,12 +189,27 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 
 %files -n %{libname}
 %{_libdir}/libmutter-%{api_m}.so.%{major}*
+%{_libdir}/mutter-16/libmutter-clutter-%{api_m}.so.%{major}*
+%{_libdir}/mutter-16/libmutter-cogl-%{api_m}.so.%{major}*
+%{_libdir}/mutter-16/libmutter-mtk-%{api_m}.so.%{major}*
 
 %files -n %{girname}
-#{_libdir}/mutter-%{api_m}/*
+%{_libdir}/mutter-16/Clutter-%{api_m}.typelib
+%{_libdir}/mutter-16/Cogl-%{api_m}.typelib
+%{_libdir}/mutter-16/Meta-%{api_m}.typelib
+%{_libdir}/mutter-16/MetaTest-%{api_m}.typelib
+%{_libdir}/mutter-16/Mtk-%{api_m}.typelib
 
 %files -n %{devname}
 %{_libdir}/*.so
+%{_libdir}/mutter-16/libmutter-clutter-%{api_m}.so
+%{_libdir}/mutter-16/libmutter-cogl-%{api_m}.so
+%{_libdir}/mutter-16/libmutter-mtk-%{api_m}.so
+%{_libdir}/mutter-16/Clutter-%{api_m}.gir
+%{_libdir}/mutter-16/Cogl-%{api_m}.gir
+%{_libdir}/mutter-16/Meta-%{api_m}.gir
+%{_libdir}/mutter-16/MetaTest-%{api_m}.gir
+%{_libdir}/mutter-16/Mtk-%{api_m}.gir
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 
