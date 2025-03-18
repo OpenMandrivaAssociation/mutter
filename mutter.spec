@@ -163,8 +163,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dnative_backend=true \
 	-Dinstalled_tests=false \
         -Dcogl_tests=false \
-	-Dclutter_tests=false \
-	-Dtests=disabled
+	-Dclutter_tests=false
 
 %meson_build
 
