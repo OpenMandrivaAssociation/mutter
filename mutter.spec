@@ -217,3 +217,5 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 
 %files tests
 %{_datadir}/mutter-%{api_m}/tests/
+%{_libdir}/mutter-%{api_m}/MetaTest-%{api_m}.gir
+%{_libdir}/mutter-%{api_m}/MetaTest-%{api_m}.typelib
