@@ -88,7 +88,7 @@ BuildRequires:	pkgconfig(clutter-egl-1.0)
 BuildRequires:	pkgconfig(cogl-1.0) >= 1.17.1
 BuildRequires:	pkgconfig(sysprof-capture-4)
 BuildRequires:	sysprof
-
+BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(xtst)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:	pkgconfig(libglvnd)
