@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 16
+%define api_m 17
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name}
@@ -15,13 +15,15 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	48.4
+Version:	49.rc
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 # Backported from upstream
+# Fix crash when locking screen on VMs
+0Patch:         0001-clutter-Skip-null-actors-in-create_event_emission_ch.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
@@ -55,6 +57,7 @@ BuildRequires:	x11-server-xvfb
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(pango)
@@ -162,8 +165,9 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dremote_desktop=true \
 	-Dnative_backend=true \
 	-Dinstalled_tests=false \
-        -Dcogl_tests=false \
-	-Dclutter_tests=false
+    -Dcogl_tests=false \
+	-Dclutter_tests=false \
+ 	-Dx11=true
 
 %meson_build
 
