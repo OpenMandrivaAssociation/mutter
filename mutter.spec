@@ -23,7 +23,7 @@ Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 # Backported from upstream
 # Fix crash when locking screen on VMs
-0Patch:         0001-clutter-Skip-null-actors-in-create_event_emission_ch.patch
+Patch0:         0001-clutter-Skip-null-actors-in-create_event_emission_ch.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
