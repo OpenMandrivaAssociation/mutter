@@ -1,0 +1,49 @@
+From 58f9d0e299ead1d3e4f548b3ce9ac93024345d4a Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Thu, 24 Jul 2025 15:24:53 -0700
+Subject: [PATCH] clutter: Skip null actors in create_event_emission_chain
+ (#4206)
+
+As discussed in #4206 and !4464, at least in virtio VMs without
+3D acceleration, when locking the screen via the top-right menu,
+we seem to reach this code with `topmost` and `deepmost` both as
+NULL. So `clutter_actor_collect_event_actors` gives us an array
+with a single null in it. Trying to do anything with this null
+actor causes a crash. To avoid that, let's skip to the next actor
+if the current one is null.
+
+This at least avoids the crash and causes the lock operation to
+work, though there are pointer behavior bugs which imply that a
+better fix might be possible elsewhere - see
+https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/4464#note_2504302
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ clutter/clutter/clutter-sprite.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/clutter/clutter/clutter-sprite.c b/clutter/clutter/clutter-sprite.c
+index 50045f8141..3541688ccc 100644
+--- a/clutter/clutter/clutter-sprite.c
++++ b/clutter/clutter/clutter-sprite.c
+@@ -346,6 +346,8 @@ create_event_emission_chain (ClutterSprite *sprite,
+   for (i = priv->cur_event_actors->len - 1; i >= 0; i--)
+     {
+       ClutterActor *actor = g_ptr_array_index (priv->cur_event_actors, i);
++      if (actor == NULL)
++        continue;
+       const GList *l;
+ 
+       for (l = clutter_actor_peek_actions (actor); l; l = l->next)
+@@ -363,6 +365,8 @@ create_event_emission_chain (ClutterSprite *sprite,
+   for (i = 0; i < priv->cur_event_actors->len; i++)
+     {
+       ClutterActor *actor = g_ptr_array_index (priv->cur_event_actors, i);
++      if (actor == NULL)
++        continue;
+       const GList *l;
+ 
+       for (l = clutter_actor_peek_actions (actor); l; l = l->next)
+-- 
+2.49.0
+
