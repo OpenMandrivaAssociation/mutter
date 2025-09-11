@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 16
+%define api_m 17
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name}
@@ -15,13 +15,15 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	48.4
+Version:	49.rc
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 # Backported from upstream
+# Fix crash when locking screen on VMs
+Patch0:         0001-clutter-Skip-null-actors-in-create_event_emission_ch.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
@@ -54,7 +56,10 @@ BuildRequires:	pkgconfig(libdisplay-info)
 BuildRequires:	x11-server-xvfb
 BuildRequires:	x11-server-xwayland
 BuildRequires:	wayland-protocols-devel
+BuildRequires:	pkgconfig(glycin-2)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
+BuildRequires:	pkgconfig(libadwaita-1)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(pango)
@@ -83,7 +88,7 @@ BuildRequires:	pkgconfig(clutter-egl-1.0)
 BuildRequires:	pkgconfig(cogl-1.0) >= 1.17.1
 BuildRequires:	pkgconfig(sysprof-capture-4)
 BuildRequires:	sysprof
-
+BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(xtst)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:	pkgconfig(libglvnd)
@@ -153,7 +158,6 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dopengl=true \
 	-Degl=true \
 	-Dglx=true \
-	-Dsm=true \
 	-Dintrospection=true \
 	-Dwayland=true \
 	-Degl_device=true \
@@ -162,8 +166,9 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dremote_desktop=true \
 	-Dnative_backend=true \
 	-Dinstalled_tests=false \
-        -Dcogl_tests=false \
-	-Dclutter_tests=false
+    -Dcogl_tests=false \
+	-Dclutter_tests=false \
+ 	-Dx11=true
 
 %meson_build
 
@@ -175,43 +180,51 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %doc COPYING NEWS
 %{_bindir}/*
 #{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.gnome.Mutter.Mdk.desktop
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.devkit.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/*.xml
+%{_datadir}/polkit-1/actions/org.gnome.mutter.backlight-helper.policy
 %dir %{_libdir}/%{name}-%{api_m}
 %dir %{_libdir}/%{name}-%{api_m}/plugins
 %{_libdir}/%{name}-%{api_m}/plugins/libdefault.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
 %{_libexecdir}/mutter-x11-frames
+%{_libexecdir}/mutter-backlight-helper
+%{_libexecdir}/mutter-devkit
 %{_prefix}/lib/udev/rules.d/61-mutter.rules
 #{_datadir}/applications/mutter-wayland.desktop
 %{_sysconfdir}/bash_completion.d/gdctl
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Mutter.Mdk.Devel.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Mutter.Mdk.svg
+%{_iconsdir}/hicolor/symbolic/apps/org.gnome.Mutter.Mdk-symbolic.svg
 
 %files -n %{libname}
 %{_libdir}/libmutter-%{api_m}.so.%{major}*
-%{_libdir}/mutter-16/libmutter-clutter-%{api_m}.so.%{major}*
-%{_libdir}/mutter-16/libmutter-cogl-%{api_m}.so.%{major}*
-%{_libdir}/mutter-16/libmutter-mtk-%{api_m}.so.%{major}*
+%{_libdir}/mutter-%{api_m}/libmutter-clutter-%{api_m}.so.%{major}*
+%{_libdir}/mutter-%{api_m}/libmutter-cogl-%{api_m}.so.%{major}*
+%{_libdir}/mutter-%{api_m}/libmutter-mtk-%{api_m}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/mutter-16/Clutter-%{api_m}.typelib
-%{_libdir}/mutter-16/Cogl-%{api_m}.typelib
-%{_libdir}/mutter-16/Meta-%{api_m}.typelib
+%{_libdir}/mutter-%{api_m}/Clutter-%{api_m}.typelib
+%{_libdir}/mutter-%{api_m}/Cogl-%{api_m}.typelib
+%{_libdir}/mutter-%{api_m}/Meta-%{api_m}.typelib
 #{_libdir}/mutter-16/MetaTest-%{api_m}.typelib
-%{_libdir}/mutter-16/Mtk-%{api_m}.typelib
+%{_libdir}/mutter-%{api_m}/Mtk-%{api_m}.typelib
 
 %files -n %{devname}
 %{_libdir}/*.so
-%{_libdir}/mutter-16/libmutter-clutter-%{api_m}.so
-%{_libdir}/mutter-16/libmutter-cogl-%{api_m}.so
-%{_libdir}/mutter-16/libmutter-mtk-%{api_m}.so
-%{_libdir}/mutter-16/Clutter-%{api_m}.gir
-%{_libdir}/mutter-16/Cogl-%{api_m}.gir
-%{_libdir}/mutter-16/Meta-%{api_m}.gir
+%{_libdir}/mutter-%{api_m}/libmutter-clutter-%{api_m}.so
+%{_libdir}/mutter-%{api_m}/libmutter-cogl-%{api_m}.so
+%{_libdir}/mutter-%{api_m}/libmutter-mtk-%{api_m}.so
+%{_libdir}/mutter-%{api_m}/Clutter-%{api_m}.gir
+%{_libdir}/mutter-%{api_m}/Cogl-%{api_m}.gir
+%{_libdir}/mutter-%{api_m}/Meta-%{api_m}.gir
 #{_libdir}/mutter-16/MetaTest-%{api_m}.gir
-%{_libdir}/mutter-16/Mtk-%{api_m}.gir
+%{_libdir}/mutter-%{api_m}/Mtk-%{api_m}.gir
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 
