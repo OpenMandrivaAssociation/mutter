@@ -156,7 +156,6 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dopengl=true \
 	-Degl=true \
 	-Dglx=true \
-	-Dsm=true \
 	-Dintrospection=true \
 	-Dwayland=true \
 	-Degl_device=true \
