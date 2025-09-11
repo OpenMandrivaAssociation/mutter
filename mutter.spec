@@ -180,19 +180,27 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %doc COPYING NEWS
 %{_bindir}/*
 #{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.gnome.Mutter.Mdk.desktop
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.devkit.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/*.xml
+%{_datadir}/polkit-1/actions/org.gnome.mutter.backlight-helper.policy
 %dir %{_libdir}/%{name}-%{api_m}
 %dir %{_libdir}/%{name}-%{api_m}/plugins
 %{_libdir}/%{name}-%{api_m}/plugins/libdefault.so
 %{_mandir}/man1/*
 %{_libexecdir}/mutter-restart-helper
 %{_libexecdir}/mutter-x11-frames
+%{_libexecdir}/mutter-backlight-helper
+%{_libexecdir}/mutter-devkit
 %{_prefix}/lib/udev/rules.d/61-mutter.rules
 #{_datadir}/applications/mutter-wayland.desktop
 %{_sysconfdir}/bash_completion.d/gdctl
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Mutter.Mdk.Devel.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Mutter.Mdk.svg
+%{_iconsdir}/hicolor/symbolic/apps/org.gnome.Mutter.Mdk-symbolic.svg
 
 %files -n %{libname}
 %{_libdir}/libmutter-%{api_m}.so.%{major}*
