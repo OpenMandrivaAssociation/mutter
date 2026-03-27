@@ -15,7 +15,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	49.3
+Version:	50.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -167,8 +167,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dnative_backend=true \
 	-Dinstalled_tests=false \
     -Dcogl_tests=false \
-	-Dclutter_tests=false \
- 	-Dx11=true
+	-Dclutter_tests=false
 
 %meson_build
 
