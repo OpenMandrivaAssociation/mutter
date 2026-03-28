@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 17
+%define api_m 18
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name}
@@ -186,7 +186,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %dir %{_libdir}/%{name}-%{api_m}/plugins
 %{_libdir}/%{name}-%{api_m}/plugins/libdefault.so
 %{_mandir}/man1/*
-%{_libexecdir}/mutter-restart-helper
+#{_libexecdir}/mutter-restart-helper
 %{_libexecdir}/mutter-x11-frames
 %{_libexecdir}/mutter-backlight-helper
 %{_libexecdir}/mutter-devkit
