@@ -16,12 +16,15 @@
 Summary:	Mutter window manager
 Name:		mutter
 Version:	50.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/mutter/%{url_ver}/%{name}-%{version}.tar.xz
 # Backported from upstream
+# wayland: Only schedule a single cursor location update            
+# https://gitlab.gnome.org/GNOME/mutter/-/commit/f1570318ec3e9a38615eb91708bb71628ab8bcfd            
+Patch0:         wayland-only-schedule-a-single-cursor-location-update.patch
 
 BuildRequires:	intltool
 BuildRequires:	gettext
