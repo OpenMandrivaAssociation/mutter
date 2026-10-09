@@ -158,7 +158,6 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dintrospection=true \
 	-Dxwayland_initfd=enabled \
 	-Dremote_desktop=true \
-	-Dnative_backend=true \
 	-Dinstalled_tests=false \
     -Dcogl_tests=false \
 	-Dclutter_tests=false
