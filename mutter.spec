@@ -200,6 +200,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/mutter-%{api_m}/libmutter-clutter-%{api_m}.so.%{major}*
 %{_libdir}/mutter-%{api_m}/libmutter-cogl-%{api_m}.so.%{major}*
 %{_libdir}/mutter-%{api_m}/libmutter-mtk-%{api_m}.so.%{major}*
+%{_libdir}/mutter-%{api_m}/libasan-preloader.so
 
 %files -n %{girname}
 %{_libdir}/mutter-%{api_m}/Clutter-%{api_m}.typelib
