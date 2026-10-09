@@ -156,12 +156,11 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dopengl=true \
 	-Degl=true \
 	-Dintrospection=true \
-	-Dwayland_eglstream=true \
 	-Dxwayland_initfd=enabled \
 	-Dremote_desktop=true \
 	-Dnative_backend=true \
 	-Dinstalled_tests=false \
-    	-Dcogl_tests=false \
+    -Dcogl_tests=false \
 	-Dclutter_tests=false
 
 %meson_build
