@@ -4,7 +4,7 @@
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api_m 18
+%define api_m 51
 %define api %{api_m}.0
 %define major 0
 %define libname %mklibname %{name}
@@ -200,6 +200,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_libdir}/mutter-%{api_m}/libmutter-clutter-%{api_m}.so.%{major}*
 %{_libdir}/mutter-%{api_m}/libmutter-cogl-%{api_m}.so.%{major}*
 %{_libdir}/mutter-%{api_m}/libmutter-mtk-%{api_m}.so.%{major}*
+%{_libdir}/mutter-%{api_m}/libasan-preloader.so
 
 %files -n %{girname}
 %{_libdir}/mutter-%{api_m}/Clutter-%{api_m}.typelib
