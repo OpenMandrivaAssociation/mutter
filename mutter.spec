@@ -15,7 +15,7 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	50.4
+Version:	51.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -156,13 +156,12 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 	-Dopengl=true \
 	-Degl=true \
 	-Dintrospection=true \
-	-Degl_device=true \
 	-Dwayland_eglstream=true \
 	-Dxwayland_initfd=enabled \
 	-Dremote_desktop=true \
 	-Dnative_backend=true \
 	-Dinstalled_tests=false \
-    -Dcogl_tests=false \
+    	-Dcogl_tests=false \
 	-Dclutter_tests=false
 
 %meson_build
@@ -178,6 +177,7 @@ sed -i "/'-Werror=redundant-decls',/d" meson.build
 %{_datadir}/applications/org.gnome.Mutter.Mdk.desktop
 %{_datadir}/GConf/gsettings/mutter-schemas.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.experimental.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.devkit.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/*.xml
