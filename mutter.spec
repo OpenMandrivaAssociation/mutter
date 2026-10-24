@@ -15,8 +15,8 @@
 
 Summary:	Mutter window manager
 Name:		mutter
-Version:	51.0
-Release:	3
+Version:	51.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://ftp.gnome.org/pub/gnome/sources/mutter/
